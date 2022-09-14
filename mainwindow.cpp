@@ -14,9 +14,9 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::setDb(QSqlDatabase _db){
-    this->db = _db;
-}
+//void MainWindow::setDb(QSqlDatabase _db){
+//    this->db = _db;
+//}
 
 QSqlDatabase MainWindow::loginDb( QString adress, QString username, QString password){
     db = QSqlDatabase::addDatabase("QMYSQL");
@@ -38,7 +38,7 @@ void MainWindow::on_pushButton_clicked()
     db = QSqlDatabase::addDatabase("QMYSQL");
     db.setHostName("localhost");
     db.setUserName("root");
-    db.setPassword("Joshy2me!teen44");
+    db.setPassword("Ab12345!");
     db.setDatabaseName("thecrapbox");
 
     if(db.open()){
