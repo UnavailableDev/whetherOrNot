@@ -15,6 +15,7 @@ SOURCES += \
 
 HEADERS += \
     dbconnector.h \
+    main.h \
     mainwindow.h
 
 FORMS += \

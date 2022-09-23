@@ -1,16 +1,18 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+#include "main.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+//    db = QSqlDatabase::addDatabase("QMYSQL");
     ui->setupUi(this);
 }
 
 MainWindow::~MainWindow()
 {
-    db.close();
+    dbRef.close();
     delete ui;
 }
 
@@ -18,14 +20,13 @@ MainWindow::~MainWindow()
 //    this->db = _db;
 //}
 
-QSqlDatabase MainWindow::loginDb( QString adress, QString username, QString password){
-    db = QSqlDatabase::addDatabase("QMYSQL");
-    db.setHostName(adress);
-    db.setUserName(username);
-    db.setPassword(password);
-    db.setDatabaseName("thecrapbox");
-    return db;
-}
+//QSqlDatabase MainWindow::loginDb( QString adress, QString username, QString password){
+//    dbRef->setHostName(adress);
+//    dbRef->setUserName(username);
+//    dbRef->setPassword(password);
+//    dbRef->setDatabaseName("thecrapbox");
+//    return db;
+//}
 
 void MainWindow::on_actionAbout_triggered()
 {
@@ -35,13 +36,17 @@ void MainWindow::on_actionAbout_triggered()
 
 void MainWindow::on_pushButton_clicked()
 {
-    db = QSqlDatabase::addDatabase("QMYSQL");
-    db.setHostName("localhost");
-    db.setUserName("root");
-    db.setPassword("Ab12345!");
-    db.setDatabaseName("thecrapbox");
+//    dbRef = QSqlDatabase::addDatabase("QMYSQL");
+    dbRef.setHostName("localhost");
+    dbRef.setUserName("root");
+    dbRef.setPassword("Ab12345!");
+    dbRef.setDatabaseName("thecrapbox");
 
-    if(db.open()){
+
+    QMessageBox::information(this, "AAAAAAAAA", dbRef.driverName());
+
+
+    if(dbRef.open()){
         QMessageBox::information(this, "Connection", "GREAT SUCCES!");
         pQueryModel = new QSqlQueryModel();
         pQueryModel->setQuery("SELECT * FROM opleiding;");

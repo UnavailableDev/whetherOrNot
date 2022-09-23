@@ -1,7 +1,8 @@
 #include "dbconnector.h"
 #include "ui_dbconnector.h"
+#include "main.h"
 
-#include "mainwindow.h"
+//#include "mainwindow.h"
 
 dbConnector::dbConnector(QWidget *parent) :
     QDialog(parent),
@@ -23,15 +24,15 @@ void dbConnector::on_pushButton_login_clicked()
 
 //    QSqlDatabase db = MainWindow.loginDb(adress, username, password);
 
-    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
-//    db.setHostName(adress);
-//    db.setUserName(username);
-//    db.setPassword(password);
-//    db.setDatabaseName("thecrapbox");
+//    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
+//    return;
+    dbRef.setHostName(adress);
+    dbRef.setUserName(username);
+    dbRef.setPassword(password);
+    dbRef.setDatabaseName("thecrapbox");
 
-    if(db.open()){
+    if(dbRef.open()){
         QMessageBox::information(this, "Connection", "GREAT SUCCES!");
-//        MainWindow::setDb(&db);
     } else {
         QMessageBox::warning(this, "No connection", "Failed to connect");
     }

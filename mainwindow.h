@@ -1,5 +1,4 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#pragma once
 
 #include <QMainWindow>
 
@@ -8,6 +7,7 @@
 #include <QMessageBox>
 #include <QtSql>
 #include <QSqlDatabase>
+#include "main.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -22,8 +22,8 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    QSqlDatabase loginDb( QString adress, QString username, QString password);
-    void setDb(QSqlDatabase db);
+//    QSqlDatabase loginDb( QString adress, QString username, QString password);
+//    void setDb(QSqlDatabase db);
 
 private slots:
     void on_actionAbout_triggered();
@@ -36,8 +36,7 @@ private:
     Ui::MainWindow *ui;
 
     dbConnector *_dbConenctor;
-    QSqlDatabase db;
+//    QSqlDatabase db;
 
     QSqlQueryModel *pQueryModel;
 };
-#endif // MAINWINDOW_H
