@@ -37,14 +37,10 @@ void MainWindow::on_actionAbout_triggered()
 void MainWindow::on_pushButton_clicked()
 {
 //    dbRef = QSqlDatabase::addDatabase("QMYSQL");
-    dbRef.setHostName("localhost");
-    dbRef.setUserName("root");
-    dbRef.setPassword("Ab12345!");
-    dbRef.setDatabaseName("thecrapbox");
-
-
-    QMessageBox::information(this, "AAAAAAAAA", dbRef.driverName());
-
+//    dbRef.setHostName("localhost");
+//    dbRef.setUserName("root");
+//    dbRef.setPassword("Ab12345!");
+//    dbRef.setDatabaseName("thecrapbox");
 
     if(dbRef.open()){
         QMessageBox::information(this, "Connection", "GREAT SUCCES!");
